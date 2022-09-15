@@ -1,0 +1,16 @@
+.vscode/
+.DS_Store
+node_modules
+npm-debug.log
+builda/components
+log.txt
+.builda.json
+.buildcomrc
+.nyc_output/
+coverage/
+builda/src/helpers/globals.ts
+**/tsconfig.tsbuildinfo
+builda/experiments
+.builda
+.env.local
+.next

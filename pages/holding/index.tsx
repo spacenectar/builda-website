@@ -91,8 +91,6 @@ export const Holding: NextPage = () => {
                 </p>
               </div>
             ) : (
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
               <form
                 name="interest"
                 data-netlify="true"

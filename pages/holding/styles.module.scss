@@ -39,6 +39,14 @@
   margin-bottom: margin(2);
 }
 
+.form textarea {
+  padding: padding(0.5) padding(1);
+  width: 100%;
+  height: 60px;
+  border: 0;
+  margin-bottom: margin(2);
+}
+
 .form label,
 .form input {
   display: block;

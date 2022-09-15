@@ -1,0 +1,18 @@
+{
+    "name": "the-burrows",
+    "type": "prefab",
+    "version": "1.0.0",
+    "author": {
+        "name": "Alex Foxleigh",
+        "builda_user": "foxleigh81"
+    },
+    "funding": "https://www.patreon.com/builda",
+    "url": "https://github.com/builda-modules/prefab_the-burrows",
+    "substitute": [
+        {
+            "replace": "APP_NAME",
+            "required": true,
+            "with": "My App"
+        }
+    ]
+}

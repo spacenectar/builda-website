@@ -18,17 +18,35 @@ export const Holding: NextPage = () => {
   const [formError, setFormError] = useState<string | undefined>(undefined);
   const [formName, setFormName] = useState<string | undefined>(undefined);
 
+  const encode = (data: { [x: string]: string | number | boolean }) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+      )
+      .join('&');
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const { name, email } = e.currentTarget.elements;
+    const { name, email, comment } = e.currentTarget.elements;
     if (name.value && email.value) {
       setFormPosted(true);
       setFormName(name.value);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': 'interest',
+          name: name.value,
+          email: email.value,
+          comment: comment.value || ''
+        })
+      }).catch((error) => alert(error));
     } else {
       setFormError('Please fill out all fields');
     }
+    e.preventDefault();
   };
 
   return (
@@ -75,11 +93,18 @@ export const Holding: NextPage = () => {
             ) : (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
-              <form netlify="true" method="POST" onSubmit={handleSubmit}>
+              <form
+                name="interest"
+                data-netlify="true"
+                method="POST"
+                onSubmit={handleSubmit}
+              >
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" id="name" required />
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" id="email" required />
+                <label htmlFor="comment">Comment (optional)</label>
+                <textarea name="comment" id="comment" rows={5} />
                 <Button
                   type="submit"
                   label="Register your interest"

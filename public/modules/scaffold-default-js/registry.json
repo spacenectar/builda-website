@@ -1,0 +1,27 @@
+{
+  "name": "scaffold-default-js",
+  "type": "scaffold",
+  "version": "1.0.0",
+  "author": {
+    "name": "Alex Foxleigh",
+    "builda_user": "foxleigh81"
+  },
+  "funding": "https://www.patreon.com/builda",
+  "url": "https://builda.app/modules/scaffold-default-js",
+  "keywords": [
+    "react"
+  ],
+  "files": [
+    "index.jsx"
+  ],
+  "dependencies": {
+    "react": "^17.0.0"
+  },
+  "substitute": [
+    {
+      "replace": "TYPE",
+      "with": "component",
+      "required": true
+    }
+  ]
+}

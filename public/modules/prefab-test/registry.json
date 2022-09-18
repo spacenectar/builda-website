@@ -1,5 +1,5 @@
 {
-    "name": "the-burrows",
+    "name": "prefab-test",
     "type": "prefab",
     "version": "1.0.0",
     "author": {
@@ -7,7 +7,7 @@
         "builda_user": "foxleigh81"
     },
     "funding": "https://www.patreon.com/builda",
-    "url": "https://github.com/builda-modules/prefab_the-burrows",
+    "url": "https://github.com/builda-modules/prefab_test",
     "substitute": [
         {
             "replace": "APP_NAME",

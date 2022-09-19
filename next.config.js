@@ -1,21 +1,20 @@
-
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
-})
+});
 
-const { createSecureHeaders } = require("next-secure-headers");
+const { createSecureHeaders } = require('next-secure-headers');
 
-const isDev = process.env.NODE_ENV !== 'production'
+const isDev = process.env.NODE_ENV !== 'production';
 
-module.exports = {
+(module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   webpack: function (config) {
     config.module.rules.push({
       test: /\.md$/,
       use: 'markdown-loader'
-    })
-    return config
+    });
+    return config;
   },
   sassOptions: {
     outputStyle: 'expanded',
@@ -28,14 +27,24 @@ module.exports = {
       `
   },
   async headers() {
-    const baseString = ["'self'", "data:", "blob:", "wss:", "firebasedatabase.app", "*.firebasedatabase.app"]
+    const baseString = [
+      "'self'",
+      'data:',
+      'blob:',
+      'wss:',
+      'firebasedatabase.app',
+      '*.firebasedatabase.app'
+    ];
     // Default content security policy
     const cspString = isDev
       ? [...baseString, "'unsafe-inline'", "'unsafe-eval'"]
-      : baseString
+      : baseString;
     // Add additional content security policy directives
-    const connectSrc = [...cspString, process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN, 'identitytoolkit.googleapis.com']
-
+    const connectSrc = [
+      ...cspString,
+      process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      'identitytoolkit.googleapis.com'
+    ];
 
     const directives = {
       'default-src': cspString,
@@ -49,18 +58,23 @@ module.exports = {
       'frame-ancestors': `'none'`,
       'base-uri': `'none'`,
       'form-action': `'none'`
-    }
+    };
 
-    return [{
-      source: "/(.*)",
-      headers: createSecureHeaders({
-        contentSecurityPolicy: {
-          directives
-        },
-        forceHTTPSRedirect: [true, { maxAge: 60 * 60 * 24 * 4, includeSubDomains: true }],
-        referrerPolicy: "same-origin",
-      })
-    }];
+    return [
+      {
+        source: '/(.*)',
+        headers: createSecureHeaders({
+          contentSecurityPolicy: {
+            directives
+          },
+          forceHTTPSRedirect: [
+            true,
+            { maxAge: 60 * 60 * 24 * 4, includeSubDomains: true }
+          ],
+          referrerPolicy: 'same-origin'
+        })
+      }
+    ];
   },
   async redirects() {
     return [
@@ -70,7 +84,7 @@ module.exports = {
         permanent: false
       },
       {
-        source: '/getting-started',
+        source: '/docs/getting-started',
         destination: '/holding',
         permanent: false
       },
@@ -99,7 +113,7 @@ module.exports = {
         destination: '/holding',
         permanent: false
       }
-    ]
-  },
-}, {}
-
+    ];
+  }
+}),
+  {};

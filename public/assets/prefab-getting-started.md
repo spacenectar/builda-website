@@ -4,7 +4,7 @@
 
 Congratulations! This package uses [Builda](https://builda.app) to generate the
 project code and keep it up to date. The code is generated from the
-[%PREFAB_NAME%](%PREFAB_URL%) (version %PREFAB_VERSION%) prefab.
+['%PREFAB_NAME%' (v%PREFAB_VERSION%)](%PREFAB_URL%) prefab.
 
 > [Learn about prefabs](https://builda.app/docs/prefabs)
 
